@@ -1,7 +1,7 @@
 import socket as S
 
 ##Establish variables:
-Address = "2a02:908:f10:b440:"
+Address = "kadsenkissen.de"
 Port = 11000
 encoding = "utf-8"
 
