@@ -1,25 +1,30 @@
 import socket as S
 
 ##Establish variables:
-Address = "2a02:908:f10:b440:d8fe:715f:f16:8ec9"
+Address = "2a02:908:f10:b440:"
 Port = 11000
 encoding = "utf-8"
 
-##Establish Socket
-socket = S.socket(S.AF_INET6, S.SOCK_STREAM, 0)
-socket.connect((Address, Port, 0, 0))
 
-##Define Data
-Msg = "Hallo ü"
+try:
+    ##Establish Socket
+    socket = S.socket(S.AF_INET6, S.SOCK_STREAM, 0)
+    socket.connect((Address, Port, 0, 0))
 
-##Send Data
-SendData = bytes(Msg, encoding)
-socket.send(SendData)
+    ##Define Data
+    Msg = "Hallo ü"
 
-##Listen for response
-recvData = socket.recv(1024)
-recvMsg = recvData.decode(encoding)
-print(recvMsg)
+    ##Send Data
+    SendData = bytes(Msg, encoding)
+    socket.send(SendData)
 
-##close Connection
-socket.close()
+    ##Listen for response
+    recvData = socket.recv(1024)
+    recvMsg = recvData.decode(encoding)
+    print(recvMsg)
+
+    ##close Connection
+    socket.close()
+
+except Exception as e:
+    print(f'Fehler beim verbinden: {e}')
